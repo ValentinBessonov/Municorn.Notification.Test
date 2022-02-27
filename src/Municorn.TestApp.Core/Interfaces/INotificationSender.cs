@@ -1,6 +1,6 @@
 ﻿using Municorn.TestApp.Core.Models;
 
-namespace Municorn.TestApp.Core.NotificationSenders;
+namespace Municorn.TestApp.Core.Interfaces;
 
 public interface INotificationSender
 {

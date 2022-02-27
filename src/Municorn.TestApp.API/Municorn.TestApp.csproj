@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Municorn.TestApp.Core\Municorn.TestApp.Core.csproj" />
     <ProjectReference Include="..\Municorn.TestApp.Core\Municorn.TestApp.Core.csproj" />
     <ProjectReference Include="..\Municorn.TestApp.Infrastructure\Municorn.TestApp.Infrastructure.csproj" />
   </ItemGroup>

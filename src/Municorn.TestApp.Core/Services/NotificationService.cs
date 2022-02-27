@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Municorn.TestApp.Core.Interfaces;
 using Municorn.TestApp.Core.Models;
-using Municorn.TestApp.Core.NotificationSenders;
 
 namespace Municorn.TestApp.Core.Services
 {
