@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Municorn.TestApp", "src\Mun
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Municorn.TestApp.Infrastructure", "src\Municorn.TestApp.Infrastructure\Municorn.TestApp.Infrastructure.csproj", "{C18960CE-3851-4091-8E87-2CA1CCE8BEA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Municorn.TestApp.Core", "Municorn.TestApp.Core\Municorn.TestApp.Core.csproj", "{2D66AC00-AF95-47D7-9FAC-6D9DA37695B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Municorn.TestApp.Core", "src\Municorn.TestApp.Core\Municorn.TestApp.Core.csproj", "{2D66AC00-AF95-47D7-9FAC-6D9DA37695B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

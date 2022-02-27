@@ -4,15 +4,6 @@ namespace Municorn.TestApp.Infrastructure.Data.Entities;
 
 public class IosNotification : NotificationBase
 {
-    public IosNotification(Core.Models.IosNotification notification)
-    {
-        PushToken = notification.PushToken;
-        Alert = notification.Alert;
-        Priority = notification.Priority;
-        Priority = notification.Priority;
-        IsBackground = notification.IsBackground;
-    }
-
     [Required]
     [MaxLength(50)]
     public string PushToken { get; set; }
@@ -24,4 +15,18 @@ public class IosNotification : NotificationBase
     public int Priority { get; set; }
 
     public bool IsBackground { get; set; }
+
+    public IosNotification(Core.Models.IosNotification notification)
+    {
+        PushToken = notification.PushToken;
+        Alert = notification.Alert;
+        Priority = notification.Priority;
+        Priority = notification.Priority;
+        IsBackground = notification.IsBackground;
+    }
+
+    public IosNotification()
+    {
+
+    }
 }

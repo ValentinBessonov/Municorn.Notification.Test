@@ -18,4 +18,9 @@ public class AndroidNotification : INotification
 
     [MaxLength(2000)]
     public string? Condition { get; set; }
+
+    public AndroidNotification()
+    {
+
+    }
 }

@@ -8,12 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Municorn.TestApp.Core\Municorn.TestApp.Core.csproj" />
+    <ProjectReference Include="..\Municorn.TestApp.Core\Municorn.TestApp.Core.csproj" />
+    <ProjectReference Include="..\Municorn.TestApp.Infrastructure\Municorn.TestApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

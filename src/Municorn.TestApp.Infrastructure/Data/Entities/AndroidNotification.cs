@@ -26,4 +26,9 @@ public class AndroidNotification : NotificationBase
         Title = notification.Title;
         Condition = notification.Condition;
     }
+
+    public AndroidNotification()
+    {
+
+    }
 }

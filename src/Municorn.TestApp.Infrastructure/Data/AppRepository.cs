@@ -1,11 +1,12 @@
-﻿using Municorn.TestApp.Core.Interfaces;
+﻿using Municorn.TestApp.Core;
+using Municorn.TestApp.Core.Interfaces;
 using Municorn.TestApp.Infrastructure.Data.Entities;
 
 namespace Municorn.TestApp.Infrastructure.Data;
 
 public class AppRepository : IAppRepository
 {
-    private AppDbContext _context;
+    private readonly AppDbContext _context;
 
     public AppRepository(AppDbContext context)
     {
@@ -14,35 +15,47 @@ public class AppRepository : IAppRepository
 
     public async Task<int> CreateNotificationAsync(Core.Models.IosNotification notification)
     {
-        var en = new IosNotification(notification);
+        var entity = new IosNotification(notification);
 
-        _context.Add(en);
+        _context.Add(entity);
         await _context.SaveChangesAsync();
 
-        return en.Id;
+        return entity.Id;
     }
 
     public async Task<int> CreateNotificationAsync(Core.Models.AndroidNotification notification)
     {
-        var en = new AndroidNotification(notification);
+        var entity = new AndroidNotification(notification);
 
-        _context.Add(en);
+        _context.Add(entity);
         await _context.SaveChangesAsync();
 
-        return en.Id;
+        return entity.Id;
     }
 
     public bool GetNotificationDelivered(int id)
     {
-        return _context.Notifications.First(x => x.Id.Equals(id)).IsDelivered;
+        return GetIfExist(id).IsDelivered;
     }
 
     public async Task UpdateNotificationStatusAsync(Core.Models.NotificationResponse response)
     {
-        var entity = _context.Notifications.First(x => x.Id.Equals(response));
+        var entity = GetIfExist(response.Id);
 
         entity.IsDelivered = response.IsDelivered;
 
         await _context.SaveChangesAsync();
+    }
+
+    private NotificationBase GetIfExist(int id)
+    {
+        var entity = _context.Notifications.FirstOrDefault(x => x.Id.Equals(id));
+
+        if (entity == null)
+        {
+            throw new ElementNotFoundException($"Notification doesn't exist! Notification id: {id}");
+        }
+
+        return entity;
     }
 }
