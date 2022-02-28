@@ -6,11 +6,11 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Notification.API/Notification.API.csproj", "Notification.API/"]
-RUN dotnet restore "Notification.API/Notification.API.csproj"
+COPY ["Municorn.TestApp/Municorn.TestApp.csproj", "Municorn.TestApp/"]
+RUN dotnet restore "Municorn.TestApp/Municorn.TestApp.csproj"
 COPY . .
-WORKDIR "/src/Notification.API"
-RUN dotnet build "Notification.API.csproj" -c Release -o /app/build
+WORKDIR "/src/Municorn.TestApp"
+RUN dotnet build "Municorn.TestApp.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Notification.API.csproj" -c Release -o /app/publish
@@ -18,4 +18,4 @@ RUN dotnet publish "Notification.API.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Notification.API.dll"]
+ENTRYPOINT ["dotnet", "Municorn.TestApp.dll"]
