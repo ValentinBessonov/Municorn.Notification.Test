@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8BC97920-488
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A5851081-6DF0-4C6D-8874-7F3D0824E323}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Municorn.TestApp", "src\Municorn.TestApp.API\Municorn.TestApp.csproj", "{67D0F1A9-76AD-44A5-9707-E52367FFF5F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Municorn.TestApp", "src\Municorn.TestApp\Municorn.TestApp.csproj", "{67D0F1A9-76AD-44A5-9707-E52367FFF5F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Municorn.TestApp.Infrastructure", "src\Municorn.TestApp.Infrastructure\Municorn.TestApp.Infrastructure.csproj", "{C18960CE-3851-4091-8E87-2CA1CCE8BEA5}"
 EndProject
