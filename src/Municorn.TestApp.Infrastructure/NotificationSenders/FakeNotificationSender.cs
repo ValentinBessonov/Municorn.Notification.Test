@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Municorn.TestApp.Infrastructure.NotificationSenders;
 
-public class FakeNotificationSenderBase
+public class FakeNotificationSender
 {
     private const int DelayMin = 500;
     private const int DelayMax = 2000;
@@ -15,15 +15,13 @@ public class FakeNotificationSenderBase
 
     public ILogger Logger { get; set; }
 
-    public FakeNotificationSenderBase(ILogger logger)
+    public FakeNotificationSender(ILogger logger)
     {
         Logger = logger;
     }
 
     public async Task<bool> Send(INotification notification)
     {
-        Logger.LogInformation(JsonSerializer.Serialize(notification));
-
         await Task.Delay(_random.Next(DelayMin, DelayMax));
 
         bool isDelivered = true;

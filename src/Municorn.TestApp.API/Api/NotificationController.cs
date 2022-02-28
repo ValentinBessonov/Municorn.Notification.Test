@@ -35,6 +35,7 @@ public class NotificationController : ControllerBase
     /// <param name="request">Notification</param>
     /// <returns>Notification response</returns>
     [HttpPost]
+    [Route("Notify")]
     public async Task<NotificationResponseDTO> Notify(NotificationDTO request)
     {
         NotificationResponse response;

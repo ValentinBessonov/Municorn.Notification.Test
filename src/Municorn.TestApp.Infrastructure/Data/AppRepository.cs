@@ -26,7 +26,7 @@ public class AppRepository : IAppRepository
         return GetIfExist(id).IsDelivered;
     }
 
-    public async Task UpdateNotificationStatusAsync(Core.Models.NotificationResponse response)
+    public async Task UpdateNotificationStatusAsync(NotificationResponse response)
     {
         var entity = GetIfExist(response.Id);
 

@@ -34,18 +34,6 @@ namespace Municorn.TestApp.Core.Services
 
             return response;
         }
-
-        private async Task<NotificationResponse> SaveAndSend(Task<int> createTask, INotificationSender sender, INotification notification)
-        {
-            var isDelivered = await sender.SendNotificationAsync(notification);
-
-            return new NotificationResponse()
-            {
-                Id = await createTask,
-                IsDelivered = isDelivered
-            };
-        }
-
         private void UpdateStateBackground(NotificationResponse response)
         {
             _repository.UpdateNotificationStatusAsync(response);

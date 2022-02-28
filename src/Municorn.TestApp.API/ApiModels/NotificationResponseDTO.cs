@@ -4,13 +4,18 @@ namespace Municorn.TestApp.ApiModels;
 
 public class NotificationResponseDTO
 {
-    public int NotificationId { get; }
+    public int NotificationId { get; set; }
 
-    public NotificationStatusDTO NotificationStatus { get; }
+    public NotificationStatusDTO NotificationStatus { get; set; }
 
     public NotificationResponseDTO(NotificationResponse response)
     {
         NotificationId = response.Id;
         NotificationStatus = new NotificationStatusDTO(response.IsDelivered);
+    }
+
+    public NotificationResponseDTO()
+    {
+
     }
 }

@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using Municorn.TestApp.Core.Interfaces;
 using Municorn.TestApp.Core.Models;
+using System.Text.Json;
 
 namespace Municorn.TestApp.Infrastructure.NotificationSenders;
 
-public class IosNotificationSender : FakeNotificationSenderBase, INotificationSender<IosNotification>
+public class IosNotificationSender : FakeNotificationSender, INotificationSender<IosNotification>
 {
     public IosNotificationSender(ILogger<IosNotificationSender> logger) : base(logger)
     {
@@ -17,6 +18,7 @@ public class IosNotificationSender : FakeNotificationSenderBase, INotificationSe
 
     public async Task<bool> SendNotificationAsync(IosNotification notification)
     {
+        Logger.LogInformation(JsonSerializer.Serialize(notification));
         return await Send(notification);
     }
 }
