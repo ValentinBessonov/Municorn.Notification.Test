@@ -10,8 +10,8 @@ namespace Municorn.TestApp.Infrastructure;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services) => services
-            .AddScoped<INotificationSender<IosNotification>, IosNotificationSender>()
-            .AddScoped<INotificationSender<AndroidNotification>, AndroidNotificationSender>();
+            .AddSingleton<INotificationSender<IosNotification>, IosNotificationSender>()
+            .AddSingleton<INotificationSender<AndroidNotification>, AndroidNotificationSender>();
 
     public static void AddRepositories(this IServiceCollection services) => services
         .AddScoped<IAppRepository, AppRepository>();

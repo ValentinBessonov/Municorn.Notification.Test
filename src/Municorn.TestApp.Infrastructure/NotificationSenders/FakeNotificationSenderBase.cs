@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Municorn.TestApp.Core.Models;
+using Municorn.TestApp.Core.Interfaces;
 using System.Text.Json;
 
 namespace Municorn.TestApp.Infrastructure.NotificationSenders;
@@ -30,7 +30,7 @@ public class FakeNotificationSenderBase
 
         lock (atteptionlockObj)
         {
-            if (_attemptNumber++ % 5 == 0)
+            if (++_attemptNumber % 5 == 0)
             {
                 isDelivered = false;
             }

@@ -2,7 +2,7 @@
 
 namespace Municorn.TestApp.Core.Models;
 
-public class AndroidNotification : INotification
+public class AndroidNotification : NotificationBaseEntity
 {
     [Required]
     [MaxLength(50)]
@@ -18,9 +18,4 @@ public class AndroidNotification : INotification
 
     [MaxLength(2000)]
     public string? Condition { get; set; }
-
-    public AndroidNotification()
-    {
-
-    }
 }

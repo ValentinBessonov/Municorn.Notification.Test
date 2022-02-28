@@ -1,4 +1,6 @@
-﻿namespace Municorn.TestApp.ApiModels;
+﻿using Municorn.TestApp.Core.Models;
+
+namespace Municorn.TestApp.ApiModels;
 
 public class NotificationResponseDTO
 {
@@ -6,9 +8,9 @@ public class NotificationResponseDTO
 
     public NotificationStatusDTO NotificationStatus { get; }
 
-    public NotificationResponseDTO(int id, bool isDelivered)
+    public NotificationResponseDTO(NotificationResponse response)
     {
-        NotificationId = id;
-        NotificationStatus = new NotificationStatusDTO(isDelivered);
+        NotificationId = response.Id;
+        NotificationStatus = new NotificationStatusDTO(response.IsDelivered);
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Municorn.TestApp.Core.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace Municorn.TestApp.Core.Models
 {
-    public class IosNotification : INotification
+    public class IosNotification : NotificationBaseEntity
     {
         [Required]
         [MaxLength(50)]

@@ -18,22 +18,19 @@ namespace Municorn.TestApp.Core.Services
         public bool GetNotificationDelivered(int id)
             => _repository.GetNotificationDelivered(id);
 
-        public async Task<NotificationResponse> SaveAndSendAsync(INotification notification)
+        public async Task<NotificationResponse> SaveAndSendAsync<T>(T notification)
+            where T : class, INotification
         {
-            var response = notification switch
+            var createTask = _repository.CreateNotificationAsync(notification);
+            var sendTask = _serviceProvider.GetRequiredService<INotificationSender<T>>().SendNotificationAsync(notification);
+
+            var response = new NotificationResponse()
             {
-                IosNotification iOSNotification => await SaveAndSend(
-                    _repository.CreateNotificationAsync(iOSNotification),
-                    _serviceProvider.GetRequiredService<INotificationSender<IosNotification>>(),
-                    notification),
-                AndroidNotification androidNotification => await SaveAndSend(
-                    _repository.CreateNotificationAsync(androidNotification),
-                    _serviceProvider.GetRequiredService<INotificationSender<AndroidNotification>>(),
-                    notification),
-                _ => throw new NotImplementedException($"Save and sending notification for type: {notification.GetType().FullName} not implemented"),
+                Id = await createTask,
+                IsDelivered = await sendTask
             };
 
-            UpdateState(response);
+            UpdateStateBackground(response);
 
             return response;
         }
@@ -49,9 +46,9 @@ namespace Municorn.TestApp.Core.Services
             };
         }
 
-        private void UpdateState(NotificationResponse response)
+        private void UpdateStateBackground(NotificationResponse response)
         {
             _repository.UpdateNotificationStatusAsync(response);
-        } 
+        }
     }
 }

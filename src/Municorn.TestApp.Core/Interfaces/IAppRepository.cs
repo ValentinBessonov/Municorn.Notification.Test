@@ -4,9 +4,8 @@ namespace Municorn.TestApp.Core.Interfaces
 {
     public interface IAppRepository
     {
-        Task<int> CreateNotificationAsync(IosNotification notification);
-
-        Task<int> CreateNotificationAsync(AndroidNotification notification);
+        Task<int> CreateNotificationAsync<T>(T notification)
+            where T : class, INotification;
 
         Task UpdateNotificationStatusAsync(NotificationResponse response);
 

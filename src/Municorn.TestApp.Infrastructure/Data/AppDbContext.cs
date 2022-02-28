@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Municorn.TestApp.Infrastructure.Data.Entities;
+using Municorn.TestApp.Core.Models;
 
 namespace Municorn.TestApp.Infrastructure.Data
 {
@@ -10,7 +10,7 @@ namespace Municorn.TestApp.Infrastructure.Data
         {
         }
 
-        public DbSet<NotificationBase> Notifications => Set<NotificationBase>();
+        public DbSet<NotificationBaseEntity> Notifications => Set<NotificationBaseEntity>();
         public DbSet<IosNotification> IosNotification => Set<IosNotification>();
         public DbSet<AndroidNotification> AndroidNotification => Set<AndroidNotification>();
     }

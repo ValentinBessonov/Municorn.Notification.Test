@@ -1,6 +1,6 @@
 ﻿using Municorn.TestApp.Core;
 using Municorn.TestApp.Core.Interfaces;
-using Municorn.TestApp.Infrastructure.Data.Entities;
+using Municorn.TestApp.Core.Models;
 
 namespace Municorn.TestApp.Infrastructure.Data;
 
@@ -13,24 +13,12 @@ public class AppRepository : IAppRepository
         _context = context;
     }
 
-    public async Task<int> CreateNotificationAsync(Core.Models.IosNotification notification)
+    public async Task<int> CreateNotificationAsync<T>(T notification)
+           where T : class, INotification
     {
-        var entity = new IosNotification(notification);
-
-        _context.Add(entity);
+        await _context.Set<T>().AddAsync(notification);
         await _context.SaveChangesAsync();
-
-        return entity.Id;
-    }
-
-    public async Task<int> CreateNotificationAsync(Core.Models.AndroidNotification notification)
-    {
-        var entity = new AndroidNotification(notification);
-
-        _context.Add(entity);
-        await _context.SaveChangesAsync();
-
-        return entity.Id;
+        return notification.Id;
     }
 
     public bool GetNotificationDelivered(int id)
@@ -47,7 +35,7 @@ public class AppRepository : IAppRepository
         await _context.SaveChangesAsync();
     }
 
-    private NotificationBase GetIfExist(int id)
+    private NotificationBaseEntity GetIfExist(int id)
     {
         var entity = _context.Notifications.FirstOrDefault(x => x.Id.Equals(id));
 
